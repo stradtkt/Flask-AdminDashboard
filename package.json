@@ -1,8 +1,8 @@
 {
- "name": "your-project-name",
+ "name": "Flask-AdminDashboard",
  "version": "1.0.0",
  "description": "Project description",
- "author": "Your Company",
+ "author": "Kevin Stradtman",
  "homepage": "http://project-homepage.com",
  "dependencies": {
   "@foxythemes/material-design-iconic-font": "^2.2.1",

@@ -4,12 +4,13 @@
       </div>
       <div class="be-right-navbar">
         <ul class="nav navbar-nav float-right be-user-nav">
-          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="assets/img/avatar.png" alt="Avatar"><span class="user-name">Túpac Amaru</span></a>
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{url_for('static', filename='assets/img/avatar1.png')}}" alt="Avatar"><span class="user-name">{{session.first_name}} {{session.last_name}}</span></a>
             <div class="dropdown-menu" role="menu">     
               <div class="user-info">
-                <div class="user-name">Túpac Amaru</div>
+                <div class="user-name">{{session.first_name}} {{session.last_name}}</div>
                 <div class="user-position online">Available</div>
-              </div><a class="dropdown-item" href="pages-profile.html"><span class="icon mdi mdi-face"></span>Account</a><a class="dropdown-item" href="#"><span class="icon mdi mdi-settings"></span>Settings</a><a class="dropdown-item" href="pages-login.html"><span class="icon mdi mdi-power"></span>Logout</a>
+                <a class="dropdown-item text-white"><span class="icon mdi mdi-face"></span> Profile</a>
+                <a class="dropdown-item text-white"><span class="icon mdi mdi-power"></span> Logout</a>
             </div>
           </li>
         </ul>
@@ -260,8 +261,7 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="documentation.html"><i class="icon mdi mdi-book"></i><span>Documentation</span></a>
-              </li>
+              <li><a href="/login-page"><i class="icon mdi mdi-power"></i><span>Login</span></a></li>
             </ul>
           </div>
         </div>
