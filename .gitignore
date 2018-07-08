@@ -1,0 +1,5 @@
+flask/
+mysqlconnection.py
+dist/
+mysql/
+.vscode/
