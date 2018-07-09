@@ -18,6 +18,7 @@ def users():
     query = "SELECT * FROM users;"
     users = mysql.query_db(query)
     return render_template('users.html', users=users)
+
 @app.route('/login-page')
 def login_page():
     return render_template('login.html')
@@ -48,6 +49,40 @@ def login():
             session['last_name'] = user[0]['last_name']
             return redirect('/')
     return redirect('/login-page')
+
+@app.route('/register-page')
+def register_now():
+    return render_template('register.html')
+
+@app.route('/register', methods=['POST'])
+def register():
+    valid = True
+    if request.form['email'] == "":
+        valid = False
+        flash("Email cannot be empty", 'danger')
+    if request.form['first_name'] == "":
+        valid = False
+        flash("First Name cannot be empty", 'danger')
+    if request.form['last_name'] == "":
+        valid = False
+        flash("Last Name cannot be empty", 'danger')
+    if request.form['password'] == "":
+        valid = False
+        flash("Password cannot be empty", 'danger')
+    if valid != True:
+        return redirect('/')
+    else:
+        query = "INSERT INTO `dashboard`.`users` (`email`, `password`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES (:email, :password, :first_name, :last_name, now(), now());"
+        data = {
+            "email": request.form['email'],
+            "password": md5.new(request.form['password']).hexdigest(),
+            "first_name": request.form['first_name'],
+            "last_name": request.form['last_name']
+        }
+        mysql.query_db(query, data)
+        flash("Successfully Registered. Login now", 'success')
+        return redirect('/')
+    return "got registered"
 
 app.run(debug=True)
 
